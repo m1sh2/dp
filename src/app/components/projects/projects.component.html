@@ -3,63 +3,19 @@
 
   <div class="row">
     <div class="col">
-      <div class="card">
+      <div *ngFor="let issue of issues" class="card">
         <div class="card-body">
-          <div class="issue-item-title">Do something</div>
+          <div class="issue-item-title" [innerText]="issue.title"></div>
           <div class="issue-item-estimate">5h</div>
           <div class="issue-item-status">
-            <div class="badge badge-success">DONE</div>
-          </div>
-        </div>
-      </div>
-
-      <div class="card">
-        <div class="card-body">
-          <div class="issue-item-title">Do something</div>
-          <div class="issue-item-estimate">5h</div>
-          <div class="issue-item-status">
-            <div class="badge badge-primary">IN PROGRESS</div>
-          </div>
-        </div>
-      </div>
-
-      <div class="card">
-        <div class="card-body">
-          <div class="issue-item-title">Do something</div>
-          <div class="issue-item-estimate">5h</div>
-          <div class="issue-item-status">
-            <div class="badge badge-light">BACKLOG</div>
-          </div>
-        </div>
-      </div>
-
-      <div class="card">
-        <div class="card-body">
-          <div class="row">
-            <div class="col-auto">
-              Do something
-            </div>
-            <div class="col text-right">
-              <div class="badge">5h</div>
+            <div
+              [innerText]="issue.status.title"
+              [className]="'badge ' + issue.status.color"
+            >
             </div>
           </div>
-
-          <div class="issue-item-status">
-            <div class="badge badge-danger">BLOCKED</div>
-          </div>
         </div>
       </div>
-
-      <div class="card">
-        <div class="card-body">
-          <div class="issue-item-title">Do something</div>
-          <div class="issue-item-estimate">5h</div>
-          <div class="issue-item-status">
-            <div class="badge badge-info">READY</div>
-          </div>
-        </div>
-      </div>
-
     </div>
   </div>
 </div>

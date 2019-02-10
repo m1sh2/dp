@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import faker from 'faker';
 
 const genRandNum = (min , max) => {
-  return Math.random() * (max - min) + min ;
+  return Math.floor(Math.random() * (max - min) + min);
 };
 
 @Component({
@@ -15,18 +15,41 @@ export class ProjectsComponent implements OnInit {
   statutes: any[] = [
     {
       title: 'BACKLOG',
+      color: '',
       type: ''
-    }
+    },
+    {
+      title: 'READY',
+      color: 'badge-secondary',
+      type: ''
+    },
+    {
+      title: 'IN PROGRESS',
+      color: 'badge-primary',
+      type: ''
+    },
+    {
+      title: 'DONE',
+      color: 'badge-success',
+      type: ''
+    },
+    {
+      title: 'CLOSED',
+      color: 'badge-secondary',
+      type: ''
+    },
   ];
 
   constructor() { }
 
   ngOnInit() {
-    this.issues = Array.from(10, i => ({
-      title: faker.name.title,
-      estimate: faker.date.past,
-      status: [genRandNum()]
+    this.issues = Array.from({ length: 10 }, i => ({
+      title: faker.name.title(),
+      estimate: 5,
+      status: this.statutes[genRandNum(0, 4)]
     }));
+
+    console.log('issues', this.issues, genRandNum(0, 4));
   }
 
 }
